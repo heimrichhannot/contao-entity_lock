@@ -108,18 +108,24 @@ $GLOBALS['TL_DCA']['tl_entity_lock'] = array
 		),
 		'pid' => array
 		(
-			'label'     => &$GLOBALS['TL_LANG']['tl_entity_lock']['pid'],
-			'inputType' => 'text',
-			'eval'      => array(
-				'placeholder'           => &$GLOBALS['TL_LANG']['tl_member']['placeholders']['locations'],
-				'freeInput'             => false,
-				'mode'                  => \TagsInput::MODE_REMOTE,
-				'remoteOptionsCallback' => array('tl_entity_lock', 'getParentEntitiesAsOptions'),
-				'remoteLabelAttribute' => 'title',
-				'mandatory' => true,
-				'tl_class'              => 'w50'
+			'label' => &$GLOBALS['TL_LANG']['tl_entity_lock']['pid'],
+			'inputType' => 'tagsinput',
+			'sql' => "int(10) unsigned NOT NULL default '0'",
+			'eval' => array(
+				'placeholder' => &$GLOBALS['TL_LANG']['tl_entity_lock']['placeholders']['pid'],
+				'freeInput' => false,
+				'mode' => \TagsInput::MODE_REMOTE,
+				'remote' => array
+				(
+					'fields' => array('title', 'id'),
+					'format' => '%s (ID:%s)',
+					'queryField' => 'title',
+					'foreignKey' => '%parentTable%.id',
+					'limit'      => 10,
+				),
+				'mandatory'   => true,
+				'tl_class'    => 'w50',
 			),
-			'sql'       => "int(10) unsigned NOT NULL default '0'",
 		),
 		'editorType' => array(
 			'label'      => &$GLOBALS['TL_LANG']['tl_entity_lock']['editorType'],

@@ -19,7 +19,8 @@
     "require": {
         "contao/core": ">=3.2,<4-dev",
 		"heimrichhannot/contao-be_explanation": ">=1.0.1",
-		"heimrichhannot/contao-haste_plus": ">=1.4.9"
+		"heimrichhannot/contao-haste_plus": ">=1.4.9",
+		"heimrichhannot/contao-tagsinput": ">=2.0.0"
 	},
 	"suggest": {
 		"heimrichhannot/contao-frontendedit": "This module adds functionality editing any contao entity in the frontend. It already contains support for entity_lock out of the box.",
