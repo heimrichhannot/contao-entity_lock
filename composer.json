@@ -1,0 +1,39 @@
+{
+    "name": "heimrichhannot/contao-entity_lock",
+    "description":"A generic helper module store locks for arbitrary entities in Contao.",
+    "keywords":["contao", "lock", "locking", "entity", "record", "form", "module", "developer"],
+    "type": "contao-module",
+    "homepage":"https://github.com/heimrichhannot/contao-entity_lock",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"Heimrich & Hannot",
+            "email":"digitales@heimrich-hannot.de",
+            "homepage":"http://www.heimrich-hannot.de",
+            "role":"Developer"
+        }
+    ],
+    "support":{
+        "issues":"https://github.com/heimrichhannot/contao-entity_lock/issues"
+    },
+    "require": {
+        "contao/core": ">=3.2,<4-dev",
+		"heimrichhannot/contao-entity_cleaner": ">=1.3.47",
+		"heimrichhannot/contao-be_explanation": ">=1.0.1",
+		"heimrichhannot/contao-haste_plus": ">=1.4.9"
+	},
+	"suggest": {
+		"heimrichhannot/contao-frontendedit": "This module adds functionality editing any contao entity in the frontend. It already contains support for entity_lock out of the box.",
+		"heimrichhannot/contao-entity_cleaner": "Could be used to remove elapsed locks. This module adds cleaner functionality for periodically removing arbitrary entities fulfilling a certain condition (using TL_CRON or your server's cron)."
+	},
+    "autoload": {
+        "classmap": [""]
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/entity_lock"
+            }
+        }
+    }
+}
