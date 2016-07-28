@@ -30,6 +30,10 @@ in order to remove elapsed locks.
 In addition you could use [heimrichhannot/contao-frontendedit](https://github.com/heimrichhannot/contao-frontendedit) to build your frontend module,
 since it already supports entity_lock, i.e. new locks are created automatically in frontend.
 
+### Defining custom title fields for auto completion in the parent entity field in a lock
+
+Extend ```$GLOBALS['TL_CONFIG']['entityLockEntityTitleFields']``` defined in config/config.php in order to define mapping for your custom entities. Otherwise auto completion will only use the id field.
+
 ## Technical instructions
 
 Do the following in your frontend module (or use [heimrichhannot/contao-frontendedit](https://github.com/heimrichhannot/contao-frontendedit) since it already does that for you):

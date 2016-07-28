@@ -9,6 +9,7 @@ $GLOBALS['TL_DCA']['tl_entity_lock'] = array
 		'onload_callback' => array
 		(
 			array('tl_entity_lock', 'modifyPalette'),
+			array('tl_entity_lock', 'setParentEntityTitleField')
 		),
 		'onsubmit_callback' => array
 		(
@@ -110,16 +111,17 @@ $GLOBALS['TL_DCA']['tl_entity_lock'] = array
 		(
 			'label' => &$GLOBALS['TL_LANG']['tl_entity_lock']['pid'],
 			'inputType' => 'tagsinput',
-			'sql' => "int(10) unsigned NOT NULL default '0'",
+			// string since 0 would be a default value
+			'sql' => "varchar(10) NOT NULL default ''",
 			'eval' => array(
 				'placeholder' => &$GLOBALS['TL_LANG']['tl_entity_lock']['placeholders']['pid'],
 				'freeInput' => false,
 				'mode' => \TagsInput::MODE_REMOTE,
 				'remote' => array
 				(
-					'fields' => array('title', 'id'),
-					'format' => '%s (ID:%s)',
-					'queryField' => 'title',
+					'fields' => array('id'),
+					'format' => 'ID:%s',
+					'queryField' => 'id',
 					'foreignKey' => '%parentTable%.id',
 					'limit'      => 10,
 				),
@@ -206,6 +208,18 @@ class tl_entity_lock extends \Backend
 		if ($objLock->editorType == \HeimrichHannot\EntityLock\EntityLock::EDITOR_TYPE_MEMBER)
 		{
 			$arrDca['fields']['editor']['options_callback'] = array('HeimrichHannot\Haste\Dca\Member', 'getMembersAsOptions');
+		}
+	}
+
+	public function setParentEntityTitleField()
+	{
+		$objLock = \HeimrichHannot\EntityLock\EntityLockModel::findByPk(\Input::get('id'));
+		$arrDca = &$GLOBALS['TL_DCA']['tl_entity_lock'];
+
+		if ($objLock->parentTable)
+		{
+			$arrEntityLockEntityTitleFields = \Config::get('entityLockEntityTitleFields');
+			$arrDca['fields']['pid']['eval']['remote'] = array_merge($arrDca['fields']['pid']['eval']['remote'], $arrEntityLockEntityTitleFields[$objLock->parentTable]);
 		}
 	}
 }
