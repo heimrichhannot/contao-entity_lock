@@ -1,6 +1,6 @@
 {
     "name": "heimrichhannot/contao-entity_lock",
-    "description":"A generic helper module store locks for arbitrary entities in Contao.",
+    "description":"A generic helper module to store locks for arbitrary entities in Contao.",
     "keywords":["contao", "lock", "locking", "entity", "record", "form", "module", "developer"],
     "type": "contao-module",
     "homepage":"https://github.com/heimrichhannot/contao-entity_lock",

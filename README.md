@@ -1,6 +1,6 @@
 # Entity Lock
 
-A generic module store arbitrary entity locks in Contao.
+A generic module to store arbitrary entity locks in Contao.
 
 ## Known limitations
 
