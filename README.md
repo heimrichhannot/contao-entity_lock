@@ -62,3 +62,9 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['my_module'] .= \HeimrichHannot\Enti
     ```
     EntityLockModel::deleteLocks('tl_calendar_events', $objEvent->id);
     ```
+
+## Hooks
+
+Name | Arguments | Description
+---- | --------- | -----------
+customizeLockErrorMessage | $strMessage, $objLock, $objEditor, $objModule | Hook for customizing the error message

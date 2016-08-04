@@ -8,7 +8,7 @@ $arrDca = &$GLOBALS['TL_DCA']['tl_module'];
 $arrDca['palettes']['__selector__'][] = 'addEntityLock';
 $arrDca['palettes']['__selector__'][] = 'overrideLockIntervals';
 
-$arrDca['subpalettes']['addEntityLock'] = 'overrideLockIntervals';
+$arrDca['subpalettes']['addEntityLock'] = 'addEditorToLockMessage,overrideLockIntervals';
 $arrDca['subpalettes']['overrideLockIntervals'] = 'lockIntervals';
 
 /**
@@ -20,6 +20,13 @@ $arrFields = array(
 		'exclude'                 => true,
 		'inputType'               => 'checkbox',
 		'eval'                    => array('submitOnChange' => true, 'tl_class' => 'w50 clr'),
+		'sql'                     => "char(1) NOT NULL default ''"
+	),
+	'addEditorToLockMessage' => array(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addEditorToLockMessage'],
+		'exclude'                 => true,
+		'inputType'               => 'checkbox',
+		'eval'                    => array('tl_class' => 'w50 clr'),
 		'sql'                     => "char(1) NOT NULL default ''"
 	),
 	'overrideLockIntervals' => array(
