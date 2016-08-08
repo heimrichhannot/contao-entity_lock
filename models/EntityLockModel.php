@@ -146,24 +146,40 @@ class EntityLockModel extends \Model
 			\UserModel::findByPk($objLock->editor);
 	}
 
+	/**
+	 * @param              $strTable
+	 * @param \Module|null $objModule
+	 *
+	 * @return null|int Returns the lock interval in seconds or false if no interval is set
+	 */
 	public static function getLockIntervalInSeconds($strTable, \Module $objModule = null)
 	{
+		$arrLocks = array();
+
 		if ($objModule !== null && $objModule->addEntityLock && $objModule->overrideLockIntervals)
 		{
 			$arrLocks = deserialize($objModule->lockIntervals, true);
 		}
 		else
 		{
-			$arrLocks = deserialize(\Config::get('lockIntervals'), true);
-		}
-
-		foreach ($arrLocks as $arrLock)
-		{
-			if ($arrLock['table'] == $strTable)
+			if (\Config::get('addLockIntervals'))
 			{
-				return DateUtil::getTimePeriodInSeconds($arrLock['interval']);
+				$arrLocks = deserialize(\Config::get('lockIntervals'), true);
 			}
 		}
+
+		if (!empty($arrLocks))
+		{
+			foreach ($arrLocks as $arrLock)
+			{
+				if ($arrLock['table'] == $strTable)
+				{
+					return DateUtil::getTimePeriodInSeconds($arrLock['interval']);
+				}
+			}
+		}
+
+		return null;
 	}
 
 }

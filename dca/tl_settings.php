@@ -5,7 +5,17 @@ $arrDca = &$GLOBALS['TL_DCA']['tl_settings'];
 /**
  * Palettes
  */
-$arrDca['palettes']['default'] .= '{locked_legend},lockExplanation,lockIntervals;';
+$arrDca['palettes']['default'] .= '{locked_legend},lockExplanation,addLockIntervals;';
+
+/**
+ * Selectors
+ */
+$arrDca['palettes']['__selector__'][] = 'addLockIntervals';
+
+/**
+ * Subpalettes
+ */
+$arrDca['subpalettes']['addLockIntervals'] = 'lockIntervals';
 
 /**
  * Fields
@@ -19,6 +29,12 @@ $arrFields = array(
 			'class'    => 'tl_info',
 			'tl_class' => 'long clr'
 		),
+	),
+	'addLockIntervals' => array(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['addLockIntervals'],
+		'exclude'                 => true,
+		'inputType'               => 'checkbox',
+		'eval'                    => array('submitOnChange' => true, 'tl_class' => 'w50')
 	),
 	'lockIntervals' => array(
 		'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['lockIntervals'],
