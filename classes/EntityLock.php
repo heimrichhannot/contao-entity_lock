@@ -109,10 +109,12 @@ class EntityLock
 
 		if ($blnIsSubmitted && \Input::get('act') == EntityLock::ACT_UNLOCK && $objLock->id == \Input::post('lock'))
 		{
+			$objFormerEditor = EntityLockModel::getEditor($objLock->id);
+
 			if ($objLock->delete() && $objModule->lockDeletionNotification)
 			{
 				static::sendLockDeletionNotification($objModule->lockDeletionNotification,
-					$strTable, $objEntity, EntityLockModel::getEditor($objLock->id), $arrTokens);
+					$strTable, $objEntity, $objFormerEditor, $arrTokens);
 			}
 
 			\Controller::redirect(Url::removeQueryString(array('act')), $objTemplate->action);
