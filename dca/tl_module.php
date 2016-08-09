@@ -7,9 +7,11 @@ $arrDca = &$GLOBALS['TL_DCA']['tl_module'];
  */
 $arrDca['palettes']['__selector__'][] = 'addEntityLock';
 $arrDca['palettes']['__selector__'][] = 'overrideLockIntervals';
+$arrDca['palettes']['__selector__'][] = 'allowLockDeletion';
 
-$arrDca['subpalettes']['addEntityLock'] = 'addEditorToLockMessage,overrideLockIntervals';
+$arrDca['subpalettes']['addEntityLock'] = 'addEditorToLockMessage,overrideLockIntervals,allowLockDeletion';
 $arrDca['subpalettes']['overrideLockIntervals'] = 'lockIntervals';
+$arrDca['subpalettes']['allowLockDeletion'] = 'lockDeletionNotification';
 
 /**
  * Fields
@@ -65,7 +67,31 @@ $arrFields = array(
 				)
 			)
 		),
+	),
+	'allowLockDeletion' => array(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['allowLockDeletion'],
+		'exclude'                 => true,
+		'inputType'               => 'checkbox',
+		'eval'                    => array('submitOnChange' => true, 'tl_class' => 'w50'),
+		'sql'                     => "char(1) NOT NULL default ''"
+	),
+	'lockDeletionNotification'           => array
+	(
+		'label'            => &$GLOBALS['TL_LANG']['tl_module']['lockDeletionNotification'],
+		'exclude'          => true,
+		'inputType'        => 'select',
+		'options_callback' => array('tl_module_entity_lock', 'getNotificationMessagesAsOptions'),
+		'eval'             => array('chosen' => true, 'tl_class' => 'w50', 'includeBlankOption' => true),
+		'sql'              => "int(10) unsigned NOT NULL default '0'"
 	)
 );
 
 $arrDca['fields'] = array_merge($arrFields, $arrDca['fields']);
+
+class tl_module_entity_lock {
+	public static function getNotificationMessagesAsOptions()
+	{
+		return \HeimrichHannot\Haste\Dca\Notification::getNotificationMessagesAsOptions(
+			\HeimrichHannot\EntityLock\EntityLock::NOTIFICATION_TYPE_LOCK_DELETED);
+	}
+}

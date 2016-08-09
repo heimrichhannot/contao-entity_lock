@@ -1,0 +1,17 @@
+<div class="entity_unlock unlock">
+	<p><?= $GLOBALS['TL_LANG']['MSC']['entity_lock']['entityLockedUnlock'] ?></p>
+
+	<form action="<?php echo $this->action; ?>"
+		  id="<?php echo $this->formId; ?>"
+		  method="post">
+		<div class="formbody">
+			<input type="hidden" name="REQUEST_TOKEN" value="{{request_token}}">
+			<input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formId; ?>">
+			<input type="hidden" name="lock" value="<?php echo $this->lock; ?>">
+
+			<button type="submit">
+				<?= $GLOBALS['TL_LANG']['MSC']['entity_lock']['unlock'] ?>
+			</button>
+		</div>
+	</form>
+</div>

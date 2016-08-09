@@ -11,6 +11,8 @@ $arrLang['overrideLockIntervals'] = array('Global definierte Sperrungszeiträume
 $arrLang['lockIntervals'] = array('Zeiträume', 'Legen Sie hier für jede Tabelle separat den Zeitraum fest, für den der entsprechende Inhalt bei Bearbeitung gesperrt werden soll.');
 $arrLang['lockIntervals']['table'] = 'Tabelle';
 $arrLang['lockIntervals']['interval'] = 'Intervall';
+$arrLang['allowLockDeletion'] = array('Das Entfernen von Sperrungen erlauben', 'Wählen Sie diese Option, wenn Frontend-Nutzer die Möglichkeit haben sollen, Sperrungen zu entfernen.');
+$arrLang['lockDeletionNotification'] = array('Benachrichtigung nach dem Entfernen der Sperrung senden', 'Wählen Sie diese Option, wenn der vorherige Bearbeiter über die Entfernung seiner Sperre informiert werden soll.');
 
 /**
  * Legends

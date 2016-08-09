@@ -85,7 +85,7 @@ class EntityLockModel extends \Model
 	{
 		$t = static::$strTable;
 
-		$intLockInterval = static::getLockIntervalInSeconds($strTable, $objModule);
+		$intLockInterval = EntityLock::getLockIntervalInSeconds($strTable, $objModule);
 
 		$arrColumns = array("$t.parentTable=?", "$t.pid=?");
 		$arrValues = array($strTable, $intEntity);
@@ -144,42 +144,6 @@ class EntityLockModel extends \Model
 
 		return $objLock->editorType == EntityLock::EDITOR_TYPE_MEMBER ? \MemberModel::findByPk($objLock->editor) :
 			\UserModel::findByPk($objLock->editor);
-	}
-
-	/**
-	 * @param              $strTable
-	 * @param \Module|null $objModule
-	 *
-	 * @return null|int Returns the lock interval in seconds or false if no interval is set
-	 */
-	public static function getLockIntervalInSeconds($strTable, \Module $objModule = null)
-	{
-		$arrLocks = array();
-
-		if ($objModule !== null && $objModule->addEntityLock && $objModule->overrideLockIntervals)
-		{
-			$arrLocks = deserialize($objModule->lockIntervals, true);
-		}
-		else
-		{
-			if (\Config::get('addLockIntervals'))
-			{
-				$arrLocks = deserialize(\Config::get('lockIntervals'), true);
-			}
-		}
-
-		if (!empty($arrLocks))
-		{
-			foreach ($arrLocks as $arrLock)
-			{
-				if ($arrLock['table'] == $strTable)
-				{
-					return DateUtil::getTimePeriodInSeconds($arrLock['interval']);
-				}
-			}
-		}
-
-		return null;
 	}
 
 }

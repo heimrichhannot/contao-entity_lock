@@ -33,3 +33,18 @@ $GLOBALS['TL_CONFIG']['entityLockEntityTitleFields'] = array(
 		'queryField' => 'headline',
 	)
 );
+
+/**
+ * Notification Center Notification Types
+ */
+$arrLockDeleted = \HeimrichHannot\Haste\Dca\Notification::getNewNotificationTypeArray(true);
+$arrLockDeleted = \HeimrichHannot\Haste\Dca\Notification::addFormHybridStyleEntityTokens('entity', $arrLockDeleted);
+$arrLockDeleted = \HeimrichHannot\Haste\Dca\Notification::addFormHybridStyleEntityTokens('former_editor', $arrLockDeleted);
+$arrLockDeleted['email_text'][] = 'salutation_former_editor';
+$arrLockDeleted['email_html'][] = 'salutation_former_editor';
+
+\HeimrichHannot\Haste\Dca\Notification::activateType(
+	\HeimrichHannot\EntityLock\EntityLock::NOTIFICATION_TYPE_ENTITY_LOCK,
+	\HeimrichHannot\EntityLock\EntityLock::NOTIFICATION_TYPE_LOCK_DELETED,
+	$arrLockDeleted
+);

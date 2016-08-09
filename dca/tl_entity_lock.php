@@ -219,6 +219,16 @@ class tl_entity_lock extends \Backend
 		if ($objLock->parentTable)
 		{
 			$arrEntityLockEntityTitleFields = \Config::get('entityLockEntityTitleFields');
+
+			if (!isset($arrEntityLockEntityTitleFields[$objLock->parentTable]))
+			{
+				$arrEntityLockEntityTitleFields[$objLock->parentTable] = array(
+					'fields' => array('id'),
+					'format' => 'ID:%s',
+					'queryField' => 'id',
+				);
+			}
+
 			$arrDca['fields']['pid']['eval']['remote'] = array_merge($arrDca['fields']['pid']['eval']['remote'], $arrEntityLockEntityTitleFields[$objLock->parentTable]);
 		}
 	}

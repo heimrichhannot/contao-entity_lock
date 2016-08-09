@@ -5,17 +5,19 @@ $arrDca = &$GLOBALS['TL_DCA']['tl_settings'];
 /**
  * Palettes
  */
-$arrDca['palettes']['default'] .= '{locked_legend},lockExplanation,addLockIntervals;';
+$arrDca['palettes']['default'] .= '{locked_legend},lockExplanation,addLockIntervals,allowLockDeletion;';
 
 /**
  * Selectors
  */
 $arrDca['palettes']['__selector__'][] = 'addLockIntervals';
+$arrDca['palettes']['__selector__'][] = 'allowLockDeletion';
 
 /**
  * Subpalettes
  */
 $arrDca['subpalettes']['addLockIntervals'] = 'lockIntervals';
+$arrDca['subpalettes']['allowLockDeletion'] = 'lockDeletionPermissions';
 
 /**
  * Fields
