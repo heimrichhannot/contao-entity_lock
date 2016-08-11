@@ -12,6 +12,7 @@ $arrLang['lockIntervals']['table'] = 'Table';
 $arrLang['lockIntervals']['interval'] = 'Interval';
 $arrLang['allowLockDeletion'] = array('Allow lock deletion', 'Choose this option if frontend users should be able to take records by deleting a the related lock.');
 $arrLang['lockDeletionNotification'] = array('Send notification to former editor', 'Choose this option if the former editor should get informed about the loss of his/her lock.');
+$arrLang['readOnlyOnLocked'] = array('Show locked records read-only', 'Choose this options if users which aren\'t the current editor should be able to read the record. Otherwise the record isn\'t rendered at all.');
 
 /**
  * Legends

@@ -9,7 +9,7 @@ $arrDca['palettes']['__selector__'][] = 'addEntityLock';
 $arrDca['palettes']['__selector__'][] = 'overrideLockIntervals';
 $arrDca['palettes']['__selector__'][] = 'allowLockDeletion';
 
-$arrDca['subpalettes']['addEntityLock'] = 'addEditorToLockMessage,overrideLockIntervals,allowLockDeletion';
+$arrDca['subpalettes']['addEntityLock'] = 'addEditorToLockMessage,overrideLockIntervals,allowLockDeletion,readOnlyOnLocked';
 $arrDca['subpalettes']['overrideLockIntervals'] = 'lockIntervals';
 $arrDca['subpalettes']['allowLockDeletion'] = 'lockDeletionNotification';
 
@@ -83,7 +83,14 @@ $arrFields = array(
 		'options_callback' => array('tl_module_entity_lock', 'getNotificationMessagesAsOptions'),
 		'eval'             => array('chosen' => true, 'tl_class' => 'w50', 'includeBlankOption' => true),
 		'sql'              => "int(10) unsigned NOT NULL default '0'"
-	)
+	),
+	'readOnlyOnLocked' => array(
+		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['readOnlyOnLocked'],
+		'exclude'                 => true,
+		'inputType'               => 'checkbox',
+		'eval'                    => array('tl_class' => 'w50'),
+		'sql'                     => "char(1) NOT NULL default ''"
+	),
 );
 
 $arrDca['fields'] = array_merge($arrFields, $arrDca['fields']);

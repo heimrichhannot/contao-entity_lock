@@ -13,6 +13,7 @@ $arrLang['lockIntervals']['table'] = 'Tabelle';
 $arrLang['lockIntervals']['interval'] = 'Intervall';
 $arrLang['allowLockDeletion'] = array('Das Entfernen von Sperrungen erlauben', 'Wählen Sie diese Option, wenn Frontend-Nutzer die Möglichkeit haben sollen, Sperrungen zu entfernen.');
 $arrLang['lockDeletionNotification'] = array('Benachrichtigung nach dem Entfernen der Sperrung senden', 'Wählen Sie diese Option, wenn der vorherige Bearbeiter über die Entfernung seiner Sperre informiert werden soll.');
+$arrLang['readOnlyOnLocked'] = array('Gesperrte Datensätze im Lesemodus anzeigen', 'Wählen Sie diese Option, wenn gesperrte Datensätze für alle Frontend-Nutzer außer dem aktuellen Bearbeiter im Lesemodus angezeigt werden dürfen. Andernfalls wird der Datensatz gar nicht angezeigt.');
 
 /**
  * Legends
