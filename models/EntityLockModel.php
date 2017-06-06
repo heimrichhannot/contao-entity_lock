@@ -87,8 +87,8 @@ class EntityLockModel extends \Model
 
 		$intLockInterval = EntityLock::getLockIntervalInSeconds($strTable, $objModule);
 
-		$arrColumns = array("$t.parentTable=?", "$t.pid=?");
-		$arrValues = array($strTable, $intEntity);
+		$arrColumns = ["$t.parentTable=?", "$t.pid=?"];
+		$arrValues = [$strTable, $intEntity];
 
 		if ($intLockInterval !== null && $intLockInterval > 0)
 		{
@@ -103,8 +103,8 @@ class EntityLockModel extends \Model
 	{
 		$t = static::$strTable;
 
-		$arrColumns = array("$t.parentTable=?", "$t.pid=?");
-		$arrValues = array($strTable, $intEntity);
+		$arrColumns = ["$t.parentTable=?", "$t.pid=?"];
+		$arrValues = [$strTable, $intEntity];
 
 		return static::findBy($arrColumns, $arrValues);
 	}
@@ -134,7 +134,7 @@ class EntityLockModel extends \Model
 				break;
 		}
 
-		return array($strEditorType, $intEditor);
+		return [$strEditorType, $intEditor];
 	}
 
 	public static function getEditor($intLock)

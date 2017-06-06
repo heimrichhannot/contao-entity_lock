@@ -16,82 +16,74 @@ $arrDca['subpalettes']['allowLockDeletion'] = 'lockDeletionNotification';
 /**
  * Fields
  */
-$arrFields = array(
-	'addEntityLock' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addEntityLock'],
-		'exclude'                 => true,
-		'inputType'               => 'checkbox',
-		'eval'                    => array('submitOnChange' => true, 'tl_class' => 'w50 clr'),
-		'sql'                     => "char(1) NOT NULL default ''"
-	),
-	'addEditorToLockMessage' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addEditorToLockMessage'],
-		'exclude'                 => true,
-		'inputType'               => 'checkbox',
-		'eval'                    => array('tl_class' => 'w50 clr'),
-		'sql'                     => "char(1) NOT NULL default ''"
-	),
-	'overrideLockIntervals' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['overrideLockIntervals'],
-		'exclude'                 => true,
-		'inputType'               => 'checkbox',
-		'eval'                    => array('submitOnChange' => true, 'tl_class' => 'w50 clr'),
-		'sql'                     => "char(1) NOT NULL default ''"
-	),
-	'lockIntervals' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['lockIntervals'],
-		'exclude'                 => true,
-		'inputType' 		=> 'multiColumnWizard',
-		'sql' => 'blob NULL',
-		'eval' 			=> array
-		(
+$arrFields = [
+    'addEntityLock' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addEntityLock'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => ['submitOnChange' => true, 'tl_class' => 'w50 clr'],
+        'sql'                     => "char(1) NOT NULL default ''"
+    ],
+    'addEditorToLockMessage' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['addEditorToLockMessage'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => ['tl_class' => 'w50 clr'],
+        'sql'                     => "char(1) NOT NULL default ''"
+    ],
+    'overrideLockIntervals' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['overrideLockIntervals'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => ['submitOnChange' => true, 'tl_class' => 'w50 clr'],
+        'sql'                     => "char(1) NOT NULL default ''"
+    ],
+    'lockIntervals' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['lockIntervals'],
+        'exclude'                 => true,
+        'inputType' 		=> 'multiColumnWizard',
+        'sql' => 'blob NULL',
+        'eval' 			=> [
 			'tl_class' => 'long clr',
-			'columnFields' => array
-			(
-				'table' => array
-				(
-					'label'            => &$GLOBALS['TL_LANG']['tl_module']['lockIntervals']['table'],
-					'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getDataContainers'),
-					'inputType'        => 'select',
-					'eval'             => array('tl_class' => 'w50', 'includeBlankOption' => true,
-												'chosen' => true, 'mandatory' => true, 'style' => 'width: 390px;')
-				),
-				'interval' => array
-				(
-					'label'     => &$GLOBALS['TL_LANG']['tl_module']['lockIntervals']['interval'],
-					'exclude'   => true,
-					'inputType' => 'timePeriod',
-					'options'   => array('m', 'h', 'd'),
-					'reference' => &$GLOBALS['TL_LANG']['MSC']['timePeriod'],
-					'eval'      => array('mandatory' => true, 'tl_class' => 'w50')
-				)
-			)
-		),
-	),
-	'allowLockDeletion' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['allowLockDeletion'],
-		'exclude'                 => true,
-		'inputType'               => 'checkbox',
-		'eval'                    => array('submitOnChange' => true, 'tl_class' => 'w50'),
-		'sql'                     => "char(1) NOT NULL default ''"
-	),
-	'lockDeletionNotification'           => array
-	(
-		'label'            => &$GLOBALS['TL_LANG']['tl_module']['lockDeletionNotification'],
-		'exclude'          => true,
-		'inputType'        => 'select',
-		'options_callback' => array('tl_module_entity_lock', 'getNotificationMessagesAsOptions'),
-		'eval'             => array('chosen' => true, 'tl_class' => 'w50', 'includeBlankOption' => true),
-		'sql'              => "int(10) unsigned NOT NULL default '0'"
-	),
-	'readOnlyOnLocked' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_module']['readOnlyOnLocked'],
-		'exclude'                 => true,
-		'inputType'               => 'checkbox',
-		'eval'                    => array('tl_class' => 'w50'),
-		'sql'                     => "char(1) NOT NULL default ''"
-	),
-);
+			'columnFields' => [
+                'table' => [
+                    'label'            => &$GLOBALS['TL_LANG']['tl_module']['lockIntervals']['table'],
+                    'options_callback' => ['HeimrichHannot\Haste\Dca\General', 'getDataContainers'],
+                    'inputType'        => 'select',
+                    'eval'             => [
+                        'tl_class' => 'w50', 'includeBlankOption' => true,
+                        'chosen'   => true, 'mandatory' => true, 'style' => 'width: 390px;'
+                    ]],
+                'interval' => [
+                    'label'     => &$GLOBALS['TL_LANG']['tl_module']['lockIntervals']['interval'],
+                    'exclude'   => true,
+                    'inputType' => 'timePeriod',
+                    'options'   => ['m', 'h', 'd'],
+                    'reference' => &$GLOBALS['TL_LANG']['MSC']['timePeriod'],
+                    'eval'      => ['mandatory' => true, 'tl_class' => 'w50']]]],
+    ],
+    'allowLockDeletion' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['allowLockDeletion'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => ['submitOnChange' => true, 'tl_class' => 'w50'],
+        'sql'                     => "char(1) NOT NULL default ''"
+    ],
+    'lockDeletionNotification'           => [
+        'label'            => &$GLOBALS['TL_LANG']['tl_module']['lockDeletionNotification'],
+        'exclude'          => true,
+        'inputType'        => 'select',
+        'options_callback' => ['tl_module_entity_lock', 'getNotificationMessagesAsOptions'],
+        'eval'             => ['chosen' => true, 'tl_class' => 'w50', 'includeBlankOption' => true],
+        'sql'              => "int(10) unsigned NOT NULL default '0'"],
+    'readOnlyOnLocked' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_module']['readOnlyOnLocked'],
+        'exclude'                 => true,
+        'inputType'               => 'checkbox',
+        'eval'                    => ['tl_class' => 'w50'],
+        'sql'                     => "char(1) NOT NULL default ''"
+    ],
+];
 
 $arrDca['fields'] = array_merge($arrFields, $arrDca['fields']);
 

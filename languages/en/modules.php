@@ -3,4 +3,4 @@
 /**
  * Backend modules
  */
-$GLOBALS['TL_LANG']['MOD']['entity_lock'] = array('Locked content', '');
+$GLOBALS['TL_LANG']['MOD']['entity_lock'] = ['Locked content', ''];

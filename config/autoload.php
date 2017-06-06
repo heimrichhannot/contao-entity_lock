@@ -12,30 +12,30 @@
 /**
  * Register the namespaces
  */
-ClassLoader::addNamespaces(array
-(
-	'HeimrichHannot',
-));
+ClassLoader::addNamespaces(
+    [
+	'HeimrichHannot',]
+);
 
 
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array
-(
+ClassLoader::addClasses(
+    [
 	// Classes
 	'HeimrichHannot\EntityLock\EntityLock'      => 'system/modules/entity_lock/classes/EntityLock.php',
 	'HeimrichHannot\EntityLock\Hooks'           => 'system/modules/entity_lock/classes/Hooks.php',
 
 	// Models
-	'HeimrichHannot\EntityLock\EntityLockModel' => 'system/modules/entity_lock/models/EntityLockModel.php',
-));
+	'HeimrichHannot\EntityLock\EntityLockModel' => 'system/modules/entity_lock/models/EntityLockModel.php',]
+);
 
 
 /**
  * Register the templates
  */
-TemplateLoader::addFiles(array
-(
-	'entity_lock_unlock_form' => 'system/modules/entity_lock/templates',
-));
+TemplateLoader::addFiles(
+    [
+	'entity_lock_unlock_form' => 'system/modules/entity_lock/templates',]
+);

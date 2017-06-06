@@ -22,51 +22,43 @@ $arrDca['subpalettes']['allowLockDeletion'] = 'lockDeletionPermissions';
 /**
  * Fields
  */
-$arrFields = array(
-	'lockExplanation' => array
-	(
-		'inputType' => 'explanation',
-		'eval'      => array(
+$arrFields = [
+    'lockExplanation' => [
+        'inputType' => 'explanation',
+        'eval'      => [
 			'text'     => &$GLOBALS['TL_LANG']['tl_settings']['lockExplanation'],
 			'class'    => 'tl_info',
 			'tl_class' => 'long clr'
-		),
-	),
-	'addLockIntervals' => array(
+        ],],
+    'addLockIntervals' => [
 		'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['addLockIntervals'],
 		'exclude'                 => true,
 		'inputType'               => 'checkbox',
-		'eval'                    => array('submitOnChange' => true, 'tl_class' => 'w50')
-	),
-	'lockIntervals' => array(
-		'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['lockIntervals'],
-		'exclude'                 => true,
-		'inputType' 		=> 'multiColumnWizard',
-		'eval' 			=> array
-		(
+		'eval'                    => ['submitOnChange' => true, 'tl_class' => 'w50']
+    ],
+    'lockIntervals' => [
+        'label'                   => &$GLOBALS['TL_LANG']['tl_settings']['lockIntervals'],
+        'exclude'                 => true,
+        'inputType' 		=> 'multiColumnWizard',
+        'eval' 			=> [
 			'tl_class' => 'long clr',
-			'columnFields' => array
-			(
-				'table' => array
-				(
-					'label'            => &$GLOBALS['TL_LANG']['tl_settings']['lockIntervals']['table'],
-					'options_callback' => array('HeimrichHannot\Haste\Dca\General', 'getDataContainers'),
-					'inputType'        => 'select',
-					'eval'             => array('tl_class' => 'w50', 'includeBlankOption' => true,
-												'chosen' => true, 'mandatory' => true, 'style' => 'width: 395px;')
-				),
-				'interval' => array
-				(
-					'label'     => &$GLOBALS['TL_LANG']['tl_settings']['lockIntervals']['interval'],
-					'exclude'   => true,
-					'inputType' => 'timePeriod',
-					'options'   => array('m', 'h', 'd'),
-					'reference' => &$GLOBALS['TL_LANG']['MSC']['timePeriod'],
-					'eval'      => array('mandatory' => true, 'tl_class' => 'w50')
-				)
-			)
-		),
-	)
-);
+			'columnFields' => [
+                'table' => [
+                    'label'            => &$GLOBALS['TL_LANG']['tl_settings']['lockIntervals']['table'],
+                    'options_callback' => ['HeimrichHannot\Haste\Dca\General', 'getDataContainers'],
+                    'inputType'        => 'select',
+                    'eval'             => [
+                        'tl_class' => 'w50', 'includeBlankOption' => true,
+                        'chosen'   => true, 'mandatory' => true, 'style' => 'width: 395px;'
+                    ]],
+                'interval' => [
+                    'label'     => &$GLOBALS['TL_LANG']['tl_settings']['lockIntervals']['interval'],
+                    'exclude'   => true,
+                    'inputType' => 'timePeriod',
+                    'options'   => ['m', 'h', 'd'],
+                    'reference' => &$GLOBALS['TL_LANG']['MSC']['timePeriod'],
+                    'eval'      => ['mandatory' => true, 'tl_class' => 'w50']]]],
+    ]
+];
 
 $arrDca['fields'] = array_merge($arrFields, $arrDca['fields']);

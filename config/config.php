@@ -3,10 +3,10 @@
 /**
 * Backend modules
 */
-$GLOBALS['BE_MOD']['accounts']['entity_lock'] = array(
-	'tables' => array('tl_entity_lock'),
-	'icon'   => 'system/modules/entity_lock/assets/img/icon.png'
-);
+$GLOBALS['BE_MOD']['accounts']['entity_lock'] = [
+    'tables' => ['tl_entity_lock'],
+    'icon'   => 'system/modules/entity_lock/assets/img/icon.png'
+];
 
 /**
 * Models
@@ -16,23 +16,23 @@ $GLOBALS['TL_MODELS']['tl_entity_lock'] = '\HeimrichHannot\EntityLock\EntityLock
 /**
  * Entity title fields
  */
-$GLOBALS['TL_CONFIG']['entityLockEntityTitleFields'] = array(
-	'tl_article' => array(
-		'fields' => array('title', 'id'),
-		'format' => '%s (ID:%s)',
-		'queryField' => 'title',
-	),
-	'tl_calendar_events' => array(
-		'fields' => array('title', 'id'),
-		'format' => '%s (ID:%s)',
-		'queryField' => 'title',
-	),
-	'tl_news' => array(
-		'fields' => array('headline', 'id'),
-		'format' => '%s (ID:%s)',
-		'queryField' => 'headline',
-	)
-);
+$GLOBALS['TL_CONFIG']['entityLockEntityTitleFields'] = [
+    'tl_article' => [
+        'fields' => ['title', 'id'],
+        'format' => '%s (ID:%s)',
+        'queryField' => 'title',
+    ],
+    'tl_calendar_events' => [
+        'fields' => ['title', 'id'],
+        'format' => '%s (ID:%s)',
+        'queryField' => 'title',
+    ],
+    'tl_news' => [
+        'fields' => ['headline', 'id'],
+        'format' => '%s (ID:%s)',
+        'queryField' => 'headline',
+    ]
+];
 
 /**
  * Notification Center Notification Types
